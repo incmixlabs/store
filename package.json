@@ -5,10 +5,14 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
+  "publishConfig": {
+    "registry": "https://registery.npmjs.org/@incmix",
+    "access": "restricted"
+  },
   "scripts": {
     "typecheck": "tsc --noEmit --tsBuildInfoFile .tsbuildinfo",
     "build": "tsup --minify",
-    "build:publish": "pnpm build && pnpm publish --access private",
+    "publish-only": "pnpm publish --access private",
     "lint": "biome check .",
     "lint:fix": "biome check --fix --unsafe"
   },
