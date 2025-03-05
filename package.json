@@ -1,60 +1,159 @@
 {
-  "name": "@incmix/store",
-  "version": "0.1.0",
-  "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "type": "module",
-  "publishConfig": {
-    "registry": "https://registery.npmjs.org/@incmix",
-    "access": "restricted"
-  },
-  "scripts": {
-    "typecheck": "tsc --noEmit --tsBuildInfoFile .tsbuildinfo",
-    "build": "tsup --minify",
-    "publish-only": "pnpm publish --access private",
-    "lint": "biome check .",
-    "lint:fix": "biome check --fix --unsafe"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "rxdb": "16.6.1",
-    "rxdb-premium": "16.6.1",
-    "rxjs": "7.8.1",
-    "wa-sqlite": "^1.0.0",
-    "@koale/useworker": "4.1.0",
-    "@radix-ui/themes": "3.2.0",
-    "broadcast-channel": "7.0.0",
-    "i18next": "24.2.1",
-    "immer": "10.1.1",
-    "nanoid": "5.0.9",
-    "observable-hooks": "4.2.4",
-    "persist-and-sync": "1.2.1",
-    "sql-template-tag": "5.2.1",
-    "use-sync-external-store": "1.4.0",
-    "y-webrtc": "10.3.0",
-    "zustand": "4.5.6",
-    "zustand-middleware-computed-state": "0.1.3",
-    "zustand-middleware-yjs": "1.3.1",
-    "zustand-valtio": "0.4.0"
-  },
-  "peerDependencies": {
-    "react": ">=19.0.0",
-    "@incmix/utils": ">=0.1.0"
-  },
-  "devDependencies": {
-    "@types/node": "^22.13.4",
-    "react": "19.0.0",
-    "@types/react": "19.0.8",
-    "@incmix/utils": "0.1.0",
-    "@biomejs/biome": "1.9.4",
-    "@commitlint/cli": "19.6.1",
-    "@commitlint/config-conventional": "19.6.0",
-    "lefthook": "1.10.4",
-    "pkg-types": "1.1.0",
-    "tsup": "8.0.2",
-    "typescript": "5.7.3"
-  }
+    "name": "@incmix/rxdb-premium",
+    "version": "16.6.1",
+    "private": false,
+    "description": "RxDB Premium",
+    "scripts": {
+        "publish-only": "pnpm publish --access private"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/pubkey/rxdb.git"
+    },
+    "bugs": {
+        "url": "https://github.com/pubkey/rxdb/issues"
+    },
+    "keywords": [
+        "rxdb"
+    ],
+    "author": "pubkey",
+    "homepage": "https://rxdb.info/premium",
+    "peerDependencies": {
+        "rxdb": "16.6.1",
+        "rxjs": "*"
+    },
+    "exports": {
+        ".": {
+            "types": "./dist/types/index.d.ts",
+            "require": "./dist/cjs/index.js",
+            "import": "./dist/esm/index.js",
+            "default": "./dist/esm/index.js"
+        },
+        "./plugins/shared": {
+            "types": "./dist/types/plugins/shared/index.d.ts",
+            "require": "./dist/cjs/plugins/shared/index.js",
+            "import": "./dist/esm/plugins/shared/index.js",
+            "default": "./dist/esm/plugins/shared/index.js"
+        },
+        "./plugins/storage-indexeddb": {
+            "types": "./dist/types/plugins/storage-indexeddb/index.d.ts",
+            "require": "./dist/cjs/plugins/storage-indexeddb/index.js",
+            "import": "./dist/esm/plugins/storage-indexeddb/index.js",
+            "default": "./dist/esm/plugins/storage-indexeddb/index.js"
+        },
+        "./plugins/storage-localstorage-meta-optimizer": {
+            "types": "./dist/types/plugins/storage-localstorage-meta-optimizer/index.d.ts",
+            "require": "./dist/cjs/plugins/storage-localstorage-meta-optimizer/index.js",
+            "import": "./dist/esm/plugins/storage-localstorage-meta-optimizer/index.js",
+            "default": "./dist/esm/plugins/storage-localstorage-meta-optimizer/index.js"
+        },
+        "./plugins/storage-memory-mapped": {
+            "types": "./dist/types/plugins/storage-memory-mapped/index.d.ts",
+            "require": "./dist/cjs/plugins/storage-memory-mapped/index.js",
+            "import": "./dist/esm/plugins/storage-memory-mapped/index.js",
+            "default": "./dist/esm/plugins/storage-memory-mapped/index.js"
+        },
+        "./plugins/query-optimizer": {
+            "types": "./dist/types/plugins/query-optimizer/index.d.ts",
+            "require": "./dist/cjs/plugins/query-optimizer/index.js",
+            "import": "./dist/esm/plugins/query-optimizer/index.js",
+            "default": "./dist/esm/plugins/query-optimizer/index.js"
+        },
+        "./plugins/storage-sharding": {
+            "types": "./dist/types/plugins/storage-sharding/index.d.ts",
+            "require": "./dist/cjs/plugins/storage-sharding/index.js",
+            "import": "./dist/esm/plugins/storage-sharding/index.js",
+            "default": "./dist/esm/plugins/storage-sharding/index.js"
+        },
+        "./plugins/storage-sqlite": {
+            "types": "./dist/types/plugins/storage-sqlite/index.d.ts",
+            "require": "./dist/cjs/plugins/storage-sqlite/index.js",
+            "import": "./dist/esm/plugins/storage-sqlite/index.js",
+            "default": "./dist/esm/plugins/storage-sqlite/index.js"
+        },
+        "./plugins/storage-worker": {
+            "types": "./dist/types/plugins/storage-worker/index.d.ts",
+            "require": "./dist/cjs/plugins/storage-worker/index.js",
+            "import": "./dist/esm/plugins/storage-worker/index.js",
+            "default": "./dist/esm/plugins/storage-worker/index.js"
+        },
+        "./plugins/storage-opfs": {
+            "types": "./dist/types/plugins/storage-opfs/index.d.ts",
+            "require": "./dist/cjs/plugins/storage-opfs/index.js",
+            "import": "./dist/esm/plugins/storage-opfs/index.js",
+            "default": "./dist/esm/plugins/storage-opfs/index.js"
+        },
+        "./plugins/storage-abstract-filesystem": {
+            "types": "./dist/types/plugins/storage-abstract-filesystem/index.d.ts",
+            "require": "./dist/cjs/plugins/storage-abstract-filesystem/index.js",
+            "import": "./dist/esm/plugins/storage-abstract-filesystem/index.js",
+            "default": "./dist/esm/plugins/storage-abstract-filesystem/index.js"
+        },
+        "./plugins/storage-filesystem-node": {
+            "types": "./dist/types/plugins/storage-filesystem-node/index.d.ts",
+            "require": "./dist/cjs/plugins/storage-filesystem-node/index.js",
+            "import": "./dist/esm/plugins/storage-filesystem-node/index.js",
+            "default": "./dist/esm/plugins/storage-filesystem-node/index.js"
+        },
+        "./plugins/encryption-web-crypto": {
+            "types": "./dist/types/plugins/encryption-web-crypto/index.d.ts",
+            "require": "./dist/cjs/plugins/encryption-web-crypto/index.js",
+            "import": "./dist/esm/plugins/encryption-web-crypto/index.js",
+            "default": "./dist/esm/plugins/encryption-web-crypto/index.js"
+        },
+        "./plugins/logger": {
+            "types": "./dist/types/plugins/logger/index.d.ts",
+            "require": "./dist/cjs/plugins/logger/index.js",
+            "import": "./dist/esm/plugins/logger/index.js",
+            "default": "./dist/esm/plugins/logger/index.js"
+        },
+        "./plugins/flexsearch": {
+            "types": "./dist/types/plugins/flexsearch/index.d.ts",
+            "require": "./dist/cjs/plugins/flexsearch/index.js",
+            "import": "./dist/esm/plugins/flexsearch/index.js",
+            "default": "./dist/esm/plugins/flexsearch/index.js"
+        },
+        "./plugins/server-adapter-fastify": {
+            "types": "./dist/types/plugins/server-adapter-fastify/index.d.ts",
+            "require": "./dist/cjs/plugins/server-adapter-fastify/index.js",
+            "import": "./dist/esm/plugins/server-adapter-fastify/index.js",
+            "default": "./dist/esm/plugins/server-adapter-fastify/index.js"
+        },
+        "./plugins/server-adapter-koa": {
+            "types": "./dist/types/plugins/server-adapter-koa/index.d.ts",
+            "require": "./dist/cjs/plugins/server-adapter-koa/index.js",
+            "import": "./dist/esm/plugins/server-adapter-koa/index.js",
+            "default": "./dist/esm/plugins/server-adapter-koa/index.js"
+        },
+        "./plugins/reactivity-vue": {
+            "types": "./dist/types/plugins/reactivity-vue/index.d.ts",
+            "require": "./dist/cjs/plugins/reactivity-vue/index.js",
+            "import": "./dist/esm/plugins/reactivity-vue/index.js",
+            "default": "./dist/esm/plugins/reactivity-vue/index.js"
+        },
+        "./plugins/reactivity-preact-signals": {
+            "types": "./dist/types/plugins/reactivity-preact-signals/index.d.ts",
+            "require": "./dist/cjs/plugins/reactivity-preact-signals/index.js",
+            "import": "./dist/esm/plugins/reactivity-preact-signals/index.js",
+            "default": "./dist/esm/plugins/reactivity-preact-signals/index.js"
+        },
+        "./plugins/source-code": {
+            "types": "./dist/types/plugins/source-code/index.d.ts",
+            "require": "./dist/cjs/plugins/source-code/index.js",
+            "import": "./dist/esm/plugins/source-code/index.js",
+            "default": "./dist/esm/plugins/source-code/index.js"
+        },
+        "./package.json": "./package.json"
+    },
+    "devDependencies": {},
+    "dependencies": {
+        "@koa/cors": "5.0.0",
+        "array-push-at-sort-position": "4.0.1",
+        "async-test-util": "2.2.1",
+        "eth-crypto": "2.7.0",
+        "flexsearch": "0.7.43",
+        "percom": "1.1.3",
+        "web-locks": "0.0.8",
+        "web-worker": "1.2.0"
+    }
 }
